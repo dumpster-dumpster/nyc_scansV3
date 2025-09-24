@@ -73,14 +73,11 @@ async function populateGallery(galleryStrip) {
             // Use splat properties or fallback to defaults
             const title = splat.name || splat.title || `NYC Scan ${index + 1}`;
             const preview = splat.preview || splat.thumbnail || '/assets/default-preview.jpg';
-            // Fix paths for GitHub Pages compatibility
-            const baseUrl = import.meta.env.BASE_URL || '/';
-            const finalPreview = splat.preview ? `${baseUrl}${splat.preview}`.replace(/\/+/g, '/') : preview;
             const id = splat.id || `scan${index + 1}`;
             
             itemElement.innerHTML = `
                 <img 
-                    src="${finalPreview}" 
+                    src="${preview}" 
                     alt="${title}" 
                     loading="lazy" 
                     onerror="this.src='/assets/default-preview.jpg'"

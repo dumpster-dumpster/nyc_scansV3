@@ -80,7 +80,7 @@ async function populateGallery(galleryStrip) {
             
             itemElement.innerHTML = `
                 <img 
-                    src="${finalPreview}" 
+                    src="${preview}" 
                     alt="${title}" 
                     loading="lazy" 
                     onerror="this.src='/assets/default-preview.jpg'"

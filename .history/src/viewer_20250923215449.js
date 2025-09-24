@@ -135,10 +135,8 @@ async function updateHeaderContent(itemId) {
 
 async function getSplatFileForItem(itemId) {
   try {
-    // Fetch splats.json to get file paths using base URL for GitHub Pages compatibility
-    const baseUrl = import.meta.env.BASE_URL || '/';
-    const splatJsonUrl = `${baseUrl}splats/splats.json`.replace(/\/+/g, '/');
-    const response = await fetch(splatJsonUrl);
+    // Fetch splats.json to get file paths
+    const response = await fetch('/splats/splats.json');
     if (!response.ok) {
       throw new Error(`Failed to fetch splats.json: ${response.status} ${response.statusText}`);
     }

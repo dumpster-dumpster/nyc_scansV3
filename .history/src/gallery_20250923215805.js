@@ -1,7 +1,19 @@
 import { switchSplat } from './viewer.js';
 
-export async function renderGallery() {
-    // Wait for DOM to be ready if needed
+export async function render            // Use splat properties or fallback to defaults
+            const title = splat.name || splat.title || `NYC Scan ${index + 1}`;
+            const baseUrl = import.meta.env.BASE_URL || '/';
+            const preview = splat.preview ? `${baseUrl}${splat.preview}`.replace(/\/+/g, '/') : `${baseUrl}assets/default-preview.jpg`.replace(/\/+/g, '/');
+            const id = splat.id || `scan${index + 1}`;
+            const errorFallback = `${baseUrl}assets/default-preview.jpg`.replace(/\/+/g, '/');
+            
+            itemElement.innerHTML = `
+                <img 
+                    src="${preview}" 
+                    alt="${title}" 
+                    loading="lazy" 
+                    onerror="this.src='${errorFallback}'"
+                >`;    // Wait for DOM to be ready if needed
     if (document.readyState === 'loading') {
         await new Promise(resolve => {
             document.addEventListener('DOMContentLoaded', resolve, { once: true });
@@ -73,14 +85,11 @@ async function populateGallery(galleryStrip) {
             // Use splat properties or fallback to defaults
             const title = splat.name || splat.title || `NYC Scan ${index + 1}`;
             const preview = splat.preview || splat.thumbnail || '/assets/default-preview.jpg';
-            // Fix paths for GitHub Pages compatibility
-            const baseUrl = import.meta.env.BASE_URL || '/';
-            const finalPreview = splat.preview ? `${baseUrl}${splat.preview}`.replace(/\/+/g, '/') : preview;
             const id = splat.id || `scan${index + 1}`;
             
             itemElement.innerHTML = `
                 <img 
-                    src="${finalPreview}" 
+                    src="${preview}" 
                     alt="${title}" 
                     loading="lazy" 
                     onerror="this.src='/assets/default-preview.jpg'"
