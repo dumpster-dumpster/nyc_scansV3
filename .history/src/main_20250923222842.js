@@ -30,28 +30,15 @@ async function getFirstScanId() {
     return 'scan1'; // fallback
   }
 }async function router() {
-  // Start loading
-  loadingManager.startLoading('Loading NYC Scans');
-  
   const hash = window.location.hash;
   if (hash.startsWith('#/viewer')) {
     const params = new URLSearchParams(hash.split('?')[1]);
-    loadingManager.addTask('render-viewer', 'Setting up viewer');
-    await renderViewer(params.get('id'));
-    loadingManager.completeTask('render-viewer', 'Viewer ready');
+    renderViewer(params.get('id'));
   } else {
     // Always render viewer with first available scan to ensure layout is created
-    loadingManager.addTask('get-first-scan', 'Finding first scan');
     const firstScanId = await getFirstScanId();
-    loadingManager.completeTask('get-first-scan', 'First scan found');
-    
-    loadingManager.addTask('render-viewer', 'Setting up viewer');
-    await renderViewer(firstScanId);
-    loadingManager.completeTask('render-viewer', 'Viewer ready');
+    renderViewer(firstScanId);
   }
-  
-  // Finish loading
-  loadingManager.finishLoading();
 }
 
 window.addEventListener('hashchange', router);

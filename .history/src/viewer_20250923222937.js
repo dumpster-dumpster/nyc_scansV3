@@ -1,5 +1,31 @@
-import { initSplatViewer } from './splatViewer.js';
-import { renderGallery } from './gallery.js';
+import { initSplatViewer } from './splatView  }
+  
+  // Initialize the splat viewer - now using splats.json for file paths
+  try {
+    loadingManager.addTask('get-splat-file', 'Finding 3D model');
+    const splatFile = await getSplatFileForItem(itemId);
+    loadingManager.completeTask('get-splat-file', 'Model found');
+    
+    loadingManager.addTask('update-header', 'Loading scan info');
+    await updateHeaderContent(itemId);
+    loadingManager.completeTask('update-header', 'Scan info loaded');
+    
+    loadingManager.addTask('init-viewer', 'Initializing 3D viewer');
+    loadingManager.setMessage('Loading 3D model...');
+    await initSplatViewer('viewer-container', splatFile);
+    loadingManager.completeTask('init-viewer', '3D viewer ready');
+  } catch (error) {
+    console.error('Failed to initialize splat viewer:', error);
+    loadingManager.completeTask('get-splat-file', 'Error loading model');
+    loadingManager.completeTask('update-header', 'Error');
+    loadingManager.completeTask('init-viewer', 'Viewer failed');
+    // Show error message to user
+    container.innerHTML = `
+      <div style="display: flex; align-items: center; justify-content: center; height: 100%; color: white; background: #333; font-family: Arial, sans-serif;">
+        <div style="text-align: center;">
+          <h2>Failed to load 3D viewer</h2>
+          <p>Error: ${error.message}</p>
+          <p>Click a thumbnail below to try loading another scan</p>`; renderGallery } from './gallery.js';
 import { loadingManager } from './loadingManager.js';
 
 let currentSplatViewer = null;
