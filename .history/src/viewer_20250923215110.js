@@ -150,12 +150,6 @@ async function getSplatFileForItem(itemId) {
     if (splat) {
       let splatPath = splat.path || splat.file || splat.url;
       
-      // Convert Dropbox sharing URLs to direct download if needed
-      if (splatPath.includes('dropbox.com') && splatPath.includes('dl=0')) {
-        splatPath = splatPath.replace('dl=0', 'dl=1').replace('dropbox.com', 'dl.dropboxusercontent.com');
-        console.log('🔄 Converted Dropbox URL to direct download:', splatPath);
-      }
-      
       return splatPath;
     }
     
