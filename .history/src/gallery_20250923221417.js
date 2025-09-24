@@ -72,7 +72,7 @@ async function populateGallery(galleryStrip) {
             
             // Use splat properties or fallback to defaults
             const title = splat.name || splat.title || `NYC Scan ${index + 1}`;
-            const preview = splat.preview || splat.thumbnail || 'splats/previews/default_preview.png';
+            const preview = splat.preview || splat.thumbnail || '/assets/default-preview.jpg';
             const id = splat.id || `scan${index + 1}`;
             
             itemElement.innerHTML = `
