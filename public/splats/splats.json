@@ -7,13 +7,6 @@
     "preview": "splats/previews/Mailbox_001.png"
   },
   {
-    "id": "scan2",
-    "name": "Mailbox 002",
-    "description": "40°43'14.85, 73°59'9.89\nNorfolk & Stanton, New York, NY",
-    "path": "https://www.dropbox.com/scl/fi/poxd4wkbzsg631jucj2jd/gs_Mailbox_Norfolk_Stanton.ply?rlkey=y8525q08yzysr2fntbfvh643n&st=etoiupk6&dl=0",
-    "preview": "splats/previews/Mailbox_002.png"
-  },
-  {
     "id": "scan3",
     "name": "Mailbox 003",
     "description": " 40°42'44.45, 73°59'31.88\nMadison & Pike, New York, NY",
@@ -40,5 +33,12 @@
     "description": " 40°42'44.45, 73°59'31.88\nMadison & Pike, New York, NY",
     "path": "https://www.dropbox.com/scl/fi/ww8mpz039p1qnjzfzpycs/gs_ATM.ply?rlkey=72q0mlfjv93cucuyxf8qmnyvx&st=j7b2nog2&dl=0",
     "preview": "splats/previews/ATM_001.png"
+  },
+    {
+    "id": "scan2",
+    "name": "Mailbox 002",
+    "description": "40°43'14.85, 73°59'9.89\nNorfolk & Stanton, New York, NY",
+    "path": "https://www.dropbox.com/scl/fi/poxd4wkbzsg631jucj2jd/gs_Mailbox_Norfolk_Stanton.ply?rlkey=y8525q08yzysr2fntbfvh643n&st=etoiupk6&dl=0",
+    "preview": "splats/previews/Mailbox_002.png"
   }
 ]
