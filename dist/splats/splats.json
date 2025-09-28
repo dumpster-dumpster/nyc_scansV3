@@ -1,0 +1,23 @@
+[
+  {
+    "id": "scan1",
+    "name": "Mailbox 001",
+    "description": "40°42'51.29, 73°59'13.43\nClinton & E Broadway, New York, NY",
+    "path": "https://www.dropbox.com/scl/fi/ihl7y5aykvpfpgbmqy3pq/gs_Mailbox_E_Broadway_Clinto.ply?rlkey=0i19c5hyzfne6pygeuvrdtdfs&st=3den6ach&dl=0",
+    "preview": "splats/previews/Mailbox_001.png"
+  },
+  {
+    "id": "scan2",
+    "name": "Mailbox 002",
+    "description": "40°43'14.85, 73°59'9.89\nNorfolk & Stanton, New York, NY",
+    "path": "https://www.dropbox.com/scl/fi/poxd4wkbzsg631jucj2jd/gs_Mailbox_Norfolk_Stanton.ply?rlkey=y8525q08yzysr2fntbfvh643n&st=etoiupk6&dl=0",
+    "preview": "splats/previews/Mailbox_002.png"
+  },
+  {
+    "id": "scan3",
+    "name": "Mailbox 003",
+    "description": " 40°42'44.45, 73°59'31.88\nMadison & Pike, New York, NY",
+    "path": "https://www.dropbox.com/scl/fi/k31o8xdlam6wzib5l6jio/gs_Mailbox_Madison_pike.ply?rlkey=tlyker6qnpxopvq66e52lx46y&st=ckvtku4h&dl=0",
+    "preview": "splats/previews/Mailbox_003.png"
+  }
+]
