@@ -669,13 +669,13 @@ function packHalf2x16(x, y) {
             
             // Debug first few vertices
             if (j < 3) {
-                console.log(`📍 Vertex ${j}: pos=[${position[0].toFixed(2)}, ${position[1].toFixed(2)}, ${position[2].toFixed(2)}], scale=[${scales[0].toFixed(3)}, ${scales[1].toFixed(3)}, ${scales[2].toFixed(3)}]`);
+                console.log(`📍 Filtered vertex ${j}: pos=[${position[0].toFixed(2)}, ${position[1].toFixed(2)}, ${position[2].toFixed(2)}], scale=[${scales[0].toFixed(3)}, ${scales[1].toFixed(3)}, ${scales[2].toFixed(3)}]`);
             }
         }
-        console.timeEnd("build buffer");
+        console.timeEnd("build filtered buffer");
         
         console.log("✅ PLY processing complete:");
-        console.log("- Final vertex count:", vertexCount);
+        console.log("- Final vertex count:", filteredCount);
         console.log("- Buffer size:", buffer.byteLength, "bytes");
         
         return buffer;
@@ -702,11 +702,13 @@ function packHalf2x16(x, y) {
         if (e.data.ply) {
             console.log('🔄 Worker processing PLY request');
             console.log('- PLY buffer size:', e.data.ply.byteLength, 'bytes');
+            console.log('- Crop enabled:', !!e.data.crop);
+            console.log('- Crop bounds:', e.data.crop);
             console.log('- Save flag:', !!e.data.save);
             
             vertexCount = 0;
             if (viewProj) runSort(viewProj);
-            buffer = processPlyBuffer(e.data.ply);
+            buffer = processPlyBuffer(e.data.ply, e.data.crop);
             vertexCount = Math.floor(buffer.byteLength / rowLength);
             
             console.log('📤 Sending processed buffer back to main thread:');

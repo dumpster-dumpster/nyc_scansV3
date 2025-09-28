@@ -669,13 +669,13 @@ function packHalf2x16(x, y) {
             
             // Debug first few vertices
             if (j < 3) {
-                console.log(`📍 Vertex ${j}: pos=[${position[0].toFixed(2)}, ${position[1].toFixed(2)}, ${position[2].toFixed(2)}], scale=[${scales[0].toFixed(3)}, ${scales[1].toFixed(3)}, ${scales[2].toFixed(3)}]`);
+                console.log(`📍 Filtered vertex ${j}: pos=[${position[0].toFixed(2)}, ${position[1].toFixed(2)}, ${position[2].toFixed(2)}], scale=[${scales[0].toFixed(3)}, ${scales[1].toFixed(3)}, ${scales[2].toFixed(3)}]`);
             }
         }
-        console.timeEnd("build buffer");
+        console.timeEnd("build filtered buffer");
         
         console.log("✅ PLY processing complete:");
-        console.log("- Final vertex count:", vertexCount);
+        console.log("- Final vertex count:", filteredCount);
         console.log("- Buffer size:", buffer.byteLength, "bytes");
         
         return buffer;

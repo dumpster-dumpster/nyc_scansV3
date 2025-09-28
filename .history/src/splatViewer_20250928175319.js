@@ -536,10 +536,11 @@ function packHalf2x16(x, y) {
             },
         );
 
-        // First pass: Calculate importance for all vertices
-        console.time("calculate importance");
+        // First pass: Filter vertices by crop bounds and calculate importance
+        console.time("filter and calculate importance");
         let sizeList = new Float32Array(vertexCount);
         let sizeIndex = new Uint32Array(vertexCount);
+        let filteredCount = 0;
         
         // Track bounds for debugging
         let bounds = {
@@ -561,48 +562,64 @@ function packHalf2x16(x, y) {
             bounds.minZ = Math.min(bounds.minZ, z);
             bounds.maxZ = Math.max(bounds.maxZ, z);
             
-            // Calculate importance for vertex
+            // Apply crop filtering if provided
+            if (crop) {
+                if (x < crop.minX || x > crop.maxX ||
+                    y < crop.minY || y > crop.maxY ||
+                    z < crop.minZ || z > crop.maxZ) {
+                    continue; // Skip this vertex
+                }
+            }
+            
+            // Calculate importance for filtered vertex
             if (types["scale_0"]) {
                 const size =
                     Math.exp(attrs.scale_0) *
                     Math.exp(attrs.scale_1) *
                     Math.exp(attrs.scale_2);
                 const opacity = 1 / (1 + Math.exp(-attrs.opacity));
-                sizeList[row] = size * opacity;
+                sizeList[filteredCount] = size * opacity;
             } else {
-                sizeList[row] = 1.0; // Default importance
+                sizeList[filteredCount] = 1.0; // Default importance
             }
             
-            sizeIndex[row] = row; // Store original row index
+            sizeIndex[filteredCount] = row; // Store original row index
+            filteredCount++;
         }
-        console.timeEnd("calculate importance");
+        console.timeEnd("filter and calculate importance");
         
-        console.log("📊 Processing results:");
-        console.log("- Vertex count:", vertexCount);
+        console.log("📊 Filtering results:");
+        console.log("- Original vertices:", vertexCount);
+        console.log("- Filtered vertices:", filteredCount);
         console.log("- Data bounds:", bounds);
+        if (crop) {
+            console.log("- Crop bounds:", crop);
+        }
 
-        if (vertexCount === 0) {
-            console.warn("⚠️ No vertices found!");
+        if (filteredCount === 0) {
+            console.warn("⚠️ No vertices remain after filtering!");
             return new ArrayBuffer(0);
         }
 
-        // Sort all vertices by importance
-        console.time("sort vertices");
-        const sortedSizeIndex = new Uint32Array(vertexCount);
-        for (let i = 0; i < vertexCount; i++) {
-            sortedSizeIndex[i] = i;
+        // Sort filtered vertices by importance
+        console.time("sort filtered vertices");
+        const filteredSizeIndex = new Uint32Array(filteredCount);
+        const filteredSizeList = new Float32Array(filteredCount);
+        for (let i = 0; i < filteredCount; i++) {
+            filteredSizeIndex[i] = i;
+            filteredSizeList[i] = sizeList[i];
         }
-        sortedSizeIndex.sort((b, a) => sizeList[a] - sizeList[b]);
-        console.timeEnd("sort vertices");
+        filteredSizeIndex.sort((b, a) => filteredSizeList[a] - filteredSizeList[b]);
+        console.timeEnd("sort filtered vertices");
 
-        // Build output buffer with all vertices
+        // Build output buffer with filtered vertices
         const rowLength = 3 * 4 + 3 * 4 + 4 + 4; // Position + Scale + RGBA + Rotation
-        const buffer = new ArrayBuffer(rowLength * vertexCount);
+        const buffer = new ArrayBuffer(rowLength * filteredCount);
 
-        console.time("build buffer");
-        for (let j = 0; j < vertexCount; j++) {
-            const sortedIndex = sortedSizeIndex[j];
-            row = sizeIndex[sortedIndex]; // Get original row index
+        console.time("build filtered buffer");
+        for (let j = 0; j < filteredCount; j++) {
+            const filteredIndex = filteredSizeIndex[j];
+            row = sizeIndex[filteredIndex]; // Get original row index
 
             const position = new Float32Array(buffer, j * rowLength, 3);
             const scales = new Float32Array(buffer, j * rowLength + 4 * 3, 3);
@@ -669,13 +686,13 @@ function packHalf2x16(x, y) {
             
             // Debug first few vertices
             if (j < 3) {
-                console.log(`📍 Vertex ${j}: pos=[${position[0].toFixed(2)}, ${position[1].toFixed(2)}, ${position[2].toFixed(2)}], scale=[${scales[0].toFixed(3)}, ${scales[1].toFixed(3)}, ${scales[2].toFixed(3)}]`);
+                console.log(`📍 Filtered vertex ${j}: pos=[${position[0].toFixed(2)}, ${position[1].toFixed(2)}, ${position[2].toFixed(2)}], scale=[${scales[0].toFixed(3)}, ${scales[1].toFixed(3)}, ${scales[2].toFixed(3)}]`);
             }
         }
-        console.timeEnd("build buffer");
+        console.timeEnd("build filtered buffer");
         
         console.log("✅ PLY processing complete:");
-        console.log("- Final vertex count:", vertexCount);
+        console.log("- Final vertex count:", filteredCount);
         console.log("- Buffer size:", buffer.byteLength, "bytes");
         
         return buffer;
@@ -702,11 +719,13 @@ function packHalf2x16(x, y) {
         if (e.data.ply) {
             console.log('🔄 Worker processing PLY request');
             console.log('- PLY buffer size:', e.data.ply.byteLength, 'bytes');
+            console.log('- Crop enabled:', !!e.data.crop);
+            console.log('- Crop bounds:', e.data.crop);
             console.log('- Save flag:', !!e.data.save);
             
             vertexCount = 0;
             if (viewProj) runSort(viewProj);
-            buffer = processPlyBuffer(e.data.ply);
+            buffer = processPlyBuffer(e.data.ply, e.data.crop);
             vertexCount = Math.floor(buffer.byteLength / rowLength);
             
             console.log('📤 Sending processed buffer back to main thread:');
