@@ -71,15 +71,15 @@ body {
 				right: 0;
 				margin: 16px;
 				height: 120px;
+				border-width: 2px;
+				border-style: solid;
+				border-color: rgba(224, 224, 224, 0.3);
 				border-radius: 6px;
 				background: rgba(214, 214, 214, 0.2);
 				overflow-x: auto;
 				overflow-y: hidden;
 				z-index: 900;
 				backdrop-filter: blur(7px);
-				box-shadow: 
-					inset 1px 1px 5px rgba(255, 255, 255, 0.75),
-					inset -1px -1px 5px rgba(0, 0, 0, 0.2);
 			}
 
 			/* Mobile Responsive Styles */
@@ -537,42 +537,4 @@ body {
 
 .control-btn.primary {
     background: rgba(0, 100, 200, 0.8);
-}
-
-.crop-panel {
-    position: fixed;
-    top: 60px;
-    left: 10px;
-    background: rgba(0, 0, 0, 0.8);
-    color: white;
-    padding: 16px;
-    border-radius: 8px;
-    z-index: 1000;
-    min-width: 250px;
-}
-
-.crop-inputs {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.axis-group {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.axis-group label {
-    min-width: 50px;
-    font-weight: bold;
-}
-
-.axis-group input {
-    flex: 1;
-    padding: 4px 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    background: white;
-    color: black;
 }

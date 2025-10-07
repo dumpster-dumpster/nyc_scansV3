@@ -1,3 +1,5 @@
+import splatCache from './splatCache.js';
+
 let cameras = [
     {
         id: 0,
@@ -8,147 +10,9 @@ let cameras = [
             -3.0089893469241797, -0.11086489695181866, -3.7527640949141428,
         ],
         rotation: [
-            [0.876134201218856, 0.06925962026449776, 0.47706599800804744],
-            [-0.04747421839895102, 0.9972110940209488, -0.057586739349882114],
-            [-0.4797239414934443, 0.027805376500959853, 0.8769787916452908],
-        ],
-        fy: 1164.6601287484507,
-        fx: 1159.5880733038064,
-    },
-    {
-        id: 1,
-        img_name: "00009",
-        width: 1959,
-        height: 1090,
-        position: [
-            -2.5199776022057296, -0.09704735754873686, -3.6247725540304545,
-        ],
-        rotation: [
-            [0.9982731285632193, -0.011928707708098955, -0.05751927260507243],
-            [0.0065061360949636325, 0.9955928229282383, -0.09355533724430458],
-            [0.058381769258182864, 0.09301955098900708, 0.9939511719154457],
-        ],
-        fy: 1164.6601287484507,
-        fx: 1159.5880733038064,
-    },
-    {
-        id: 2,
-        img_name: "00017",
-        width: 1959,
-        height: 1090,
-        position: [
-            -0.7737533667465242, -0.3364271945329695, -2.9358969417573753,
-        ],
-        rotation: [
-            [0.9998813418672372, 0.013742375651625236, -0.0069605529394208224],
-            [-0.014268370388586709, 0.996512943252834, -0.08220929105659476],
-            [0.00580653013657589, 0.08229885200307129, 0.9965907801935302],
-        ],
-        fy: 1164.6601287484507,
-        fx: 1159.5880733038064,
-    },
-    {
-        id: 3,
-        img_name: "00025",
-        width: 1959,
-        height: 1090,
-        position: [
-            1.2198221749590001, -0.2196687861401182, -2.3183162007028453,
-        ],
-        rotation: [
-            [0.9208648867765482, 0.0012010625395201253, 0.389880004297208],
-            [-0.06298204172269357, 0.987319521752825, 0.14571693239364383],
-            [-0.3847611242348369, -0.1587410451475895, 0.9092635249821667],
-        ],
-        fy: 1164.6601287484507,
-        fx: 1159.5880733038064,
-    },
-    {
-        id: 4,
-        img_name: "00033",
-        width: 1959,
-        height: 1090,
-        position: [
-            1.742387858893817, -0.13848225198886954, -2.0566370113193146,
-        ],
-        rotation: [
-            [0.24669889292141334, -0.08370189346592856, -0.9654706879349405],
-            [0.11343747891376445, 0.9919082664242816, -0.05700815184573074],
-            [0.9624300466054861, -0.09545671285663988, 0.2541976029815521],
-        ],
-        fy: 1164.6601287484507,
-        fx: 1159.5880733038064,
-    },
-    {
-        id: 5,
-        img_name: "00041",
-        width: 1959,
-        height: 1090,
-        position: [
-            3.6567309419223935, -0.16470990600750707, -1.3458085590422042,
-        ],
-        rotation: [
-            [0.2341293058324528, -0.02968330457755884, -0.9717522161434825],
-            [0.10270823606832301, 0.99469554638321, -0.005638106875665722],
-            [0.9667649592295676, -0.09848690996657204, 0.2359360976431732],
-        ],
-        fy: 1164.6601287484507,
-        fx: 1159.5880733038064,
-    },
-    {
-        id: 6,
-        img_name: "00049",
-        width: 1959,
-        height: 1090,
-        position: [
-            3.9013554243203497, -0.2597500978038105, -0.8106154188297828,
-        ],
-        rotation: [
-            [0.6717235545638952, -0.015718162115524837, -0.7406351366386528],
-            [0.055627354673906296, 0.9980224478387622, 0.029270992841185218],
-            [0.7387104058127439, -0.060861588786650656, 0.6712695459756353],
-        ],
-        fy: 1164.6601287484507,
-        fx: 1159.5880733038064,
-    },
-    {
-        id: 7,
-        img_name: "00057",
-        width: 1959,
-        height: 1090,
-        position: [4.742994605467533, -0.05591660945412069, 0.9500365976084458],
-        rotation: [
-            [-0.17042655709210375, 0.01207080756938, -0.9852964448542146],
-            [0.1165090336695526, 0.9931575292530063, -0.00798543433078162],
-            [0.9784581921120181, -0.1161568667478904, -0.1706667764862097],
-        ],
-        fy: 1164.6601287484507,
-        fx: 1159.5880733038064,
-    },
-    {
-        id: 8,
-        img_name: "00065",
-        width: 1959,
-        height: 1090,
-        position: [4.34676307626522, 0.08168160516967145, 1.0876221470355405],
-        rotation: [
-            [-0.003575447631888379, -0.044792503246552894, -0.9989899137764799],
-            [0.10770152645126597, 0.9931680875192705, -0.04491693593046672],
-            [0.9941768441149182, -0.10775333677534978, 0.0012732004866391048],
-        ],
-        fy: 1164.6601287484507,
-        fx: 1159.5880733038064,
-    },
-    {
-        id: 9,
-        img_name: "00073",
-        width: 1959,
-        height: 1090,
-        position: [3.264984351114202, 0.078974937336732, 1.0117200284114904],
-        rotation: [
-            [-0.026919994628162257, -0.1565891128261527, -0.9872968974090509],
-            [0.08444552208239385, 0.983768234577625, -0.1583319754069128],
-            [0.9960643893290491, -0.0876350978794554, -0.013259786205163005],
+            [0, 0, 0],
+            [0, 0, 0],
+            [0, 0, 0],
         ],
         fy: 1164.6601287484507,
         fx: 1159.5880733038064,
@@ -822,6 +686,34 @@ void main () {
 
     `.trim();
 
+// Red dot shaders for origin marker
+const redDotVertexShaderSource = `
+#version 300 es
+precision highp float;
+
+uniform mat4 u_mvpMatrix;
+in vec3 a_position;
+
+void main() {
+    gl_Position = u_mvpMatrix * vec4(a_position, 1.0);
+    gl_PointSize = 15.0;
+}
+`.trim();
+
+const redDotFragmentShaderSource = `
+#version 300 es
+precision highp float;
+
+out vec4 fragColor;
+
+void main() {
+    // Create a circular dot by discarding pixels outside circle
+    vec2 coord = gl_PointCoord - vec2(0.5);
+    if (length(coord) > 0.5) discard;
+    fragColor = vec4(1.0, 0.0, 0.0, 1.0); // Bright red
+}
+`.trim();
+
 let defaultViewMatrix = [
     0.47, 0.04, 0.88, 0, -0.11, 0.99, 0.02, 0, -0.88, -0.11, 0.47, 0, 0.07,
     0.03, 6.55, 1,
@@ -885,7 +777,7 @@ export async function initSplatViewer(containerId, splatFile) {
         throw new Error('WebGL2 not supported');
     }
     
-    let carousel = true;
+    let carousel = false; // Start with orbital camera, disable carousel
     let buffer;
     let vertexCount = 0;
     
@@ -897,41 +789,183 @@ export async function initSplatViewer(containerId, splatFile) {
         carousel = false;
     } catch (err) {}
 
-    console.log('🌐 Fetching splat file from:', splatFile);
-    
-    const req = await fetch(splatFile, {
-        mode: "cors",
-        headers: {
-            'Cache-Control': 'no-cache'
-        },
-        credentials: "omit",
-    });
-    
-    if (req.status != 200) {
-        throw new Error(req.status + " Unable to load " + req.url);
+    // Initialize cache if not already done
+    if (!splatCache.isAvailable()) {
+        try {
+            await splatCache.init();
+        } catch (error) {
+            console.warn('⚠️ Cache initialization failed, continuing without cache:', error);
+        }
     }
 
+    // Common WebGL setup
     const rowLength = 3 * 4 + 3 * 4 + 4 + 4;
-    const reader = req.body.getReader();
-    
-    // Get the actual content length from headers
-    const contentLength = req.headers.get("content-length");
-    console.log('📊 File info from headers:');
-    console.log('- Content-Length header:', contentLength, 'bytes');
-    console.log('- Expected size:', contentLength ? (parseInt(contentLength) / 1024 / 1024).toFixed(2) + ' MB' : 'unknown');
-    
-    // Initialize with proper size or fallback
-    let splatData;
-    if (contentLength) {
-        splatData = new Uint8Array(parseInt(contentLength));
-        console.log('📦 Allocated buffer size:', splatData.length, 'bytes');
-    } else {
-        // Fallback for servers that don't provide content-length
-        console.log('⚠️ No content-length header, using dynamic allocation');
-        splatData = new Uint8Array(0);
-    }
+    let downsample = 1 / devicePixelRatio;
 
-    const downsample = splatData.length / rowLength > 500000 ? 1 : 1 / devicePixelRatio;
+    const worker = new Worker(
+        URL.createObjectURL(
+            new Blob(["(", createWorker.toString(), ")(self)"], {
+                type: "application/javascript",
+            }),
+        ),
+    );
+
+    let projectionMatrix;
+
+    const vertexShader = gl.createShader(gl.VERTEX_SHADER);
+    gl.shaderSource(vertexShader, vertexShaderSource);
+    gl.compileShader(vertexShader);
+    if (!gl.getShaderParameter(vertexShader, gl.COMPILE_STATUS))
+        console.error(gl.getShaderInfoLog(vertexShader));
+
+    const fragmentShader = gl.createShader(gl.FRAGMENT_SHADER);
+    gl.shaderSource(fragmentShader, fragmentShaderSource);
+    gl.compileShader(fragmentShader);
+    if (!gl.getShaderParameter(fragmentShader, gl.COMPILE_STATUS))
+        console.error(gl.getShaderInfoLog(fragmentShader));
+
+    const program = gl.createProgram();
+    gl.attachShader(program, vertexShader);
+    gl.attachShader(program, fragmentShader);
+    gl.linkProgram(program);
+    gl.useProgram(program);
+
+    if (!gl.getProgramParameter(program, gl.LINK_STATUS))
+        console.error(gl.getProgramInfoLog(program));
+
+    // Create red dot shader program
+    const redDotVertexShader = gl.createShader(gl.VERTEX_SHADER);
+    gl.shaderSource(redDotVertexShader, redDotVertexShaderSource);
+    gl.compileShader(redDotVertexShader);
+    if (!gl.getShaderParameter(redDotVertexShader, gl.COMPILE_STATUS))
+        console.error('Red dot vertex shader error:', gl.getShaderInfoLog(redDotVertexShader));
+
+    const redDotFragmentShader = gl.createShader(gl.FRAGMENT_SHADER);
+    gl.shaderSource(redDotFragmentShader, redDotFragmentShaderSource);
+    gl.compileShader(redDotFragmentShader);
+    if (!gl.getShaderParameter(redDotFragmentShader, gl.COMPILE_STATUS))
+        console.error('Red dot fragment shader error:', gl.getShaderInfoLog(redDotFragmentShader));
+
+    const redDotProgram = gl.createProgram();
+    gl.attachShader(redDotProgram, redDotVertexShader);
+    gl.attachShader(redDotProgram, redDotFragmentShader);
+    gl.linkProgram(redDotProgram);
+
+    if (!gl.getProgramParameter(redDotProgram, gl.LINK_STATUS))
+        console.error('Red dot program link error:', gl.getProgramInfoLog(redDotProgram));
+
+    // Get red dot program uniforms and attributes
+    const redDot_u_mvpMatrix = gl.getUniformLocation(redDotProgram, "u_mvpMatrix");
+    const redDot_a_position = gl.getAttribLocation(redDotProgram, "a_position");
+
+    // Create origin point geometry (single point at 0,0,0)
+    const originPoint = new Float32Array([0.0, 0.0, 0.0]);
+    const originBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, originBuffer);
+    gl.bufferData(gl.ARRAY_BUFFER, originPoint, gl.STATIC_DRAW);
+
+    gl.disable(gl.DEPTH_TEST);
+    gl.enable(gl.BLEND);
+    gl.blendFuncSeparate(
+        gl.ONE_MINUS_DST_ALPHA,
+        gl.ONE,
+        gl.ONE_MINUS_DST_ALPHA,
+        gl.ONE,
+    );
+    gl.blendEquationSeparate(gl.FUNC_ADD, gl.FUNC_ADD);
+
+    const u_projection = gl.getUniformLocation(program, "projection");
+    const u_viewport = gl.getUniformLocation(program, "viewport");
+    const u_focal = gl.getUniformLocation(program, "focal");
+    const u_view = gl.getUniformLocation(program, "view");
+
+    const triangleVertices = new Float32Array([-2, -2, 2, -2, 2, 2, -2, 2]);
+    const vertexBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
+    gl.bufferData(gl.ARRAY_BUFFER, triangleVertices, gl.STATIC_DRAW);
+    const a_position = gl.getAttribLocation(program, "position");
+    gl.enableVertexAttribArray(a_position);
+    gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
+    gl.vertexAttribPointer(a_position, 2, gl.FLOAT, false, 0, 0);
+
+    var texture = gl.createTexture();
+    gl.bindTexture(gl.TEXTURE_2D, texture);
+
+    var u_textureLocation = gl.getUniformLocation(program, "u_texture");
+    gl.uniform1i(u_textureLocation, 0);
+
+    const indexBuffer = gl.createBuffer();
+
+    // Check cache first
+    console.log('� Checking cache for:', splatFile);
+    const cachedData = await splatCache.get(splatFile);
+    
+    if (cachedData) {
+        console.log('🚀 Loading from cache - skipping download!');
+        
+        // Update spinner to show cache loading
+        if (message) {
+            message.textContent = 'Loading from cache...';
+        }
+        
+        // Use cached data directly
+        buffer = cachedData.buffer;
+        vertexCount = cachedData.vertexCount;
+        downsample = vertexCount > 500000 ? 1 : 1 / devicePixelRatio;
+        
+        console.log('📦 Using cached buffer:', buffer.byteLength, 'bytes, vertices:', vertexCount);
+        
+        // Process cached data immediately
+        worker.postMessage({
+            buffer: buffer,
+            vertexCount: vertexCount,
+            view: viewMatrix,
+            proj: projectionMatrix,
+            downsample: downsample,
+        });
+        
+    } else {
+        console.log('💾 No cache found, downloading from source...');
+        if (message) {
+            message.textContent = 'Downloading splat data...';
+        }
+        
+        // Continue with normal download process
+        console.log('🌐 Fetching splat file from:', splatFile);
+        
+        const req = await fetch(splatFile, {
+            mode: "cors",
+            headers: {
+                'Accept-Encoding': 'gzip, deflate, br',
+                'Cache-Control': 'max-age=3600', // Cache for 1 hour
+            },
+            credentials: "omit",
+        });
+        
+        if (req.status != 200) {
+            throw new Error(req.status + " Unable to load " + req.url);
+        }
+
+        const reader = req.body.getReader();
+        
+        // Get the actual content length from headers
+        const contentLength = req.headers.get("content-length");
+        console.log('📊 File info from headers:');
+        console.log('- Content-Length header:', contentLength, 'bytes');
+        console.log('- Expected size:', contentLength ? (parseInt(contentLength) / 1024 / 1024).toFixed(2) + ' MB' : 'unknown');
+        
+        // Initialize with proper size or fallback
+        let splatData;
+        if (contentLength) {
+            splatData = new Uint8Array(parseInt(contentLength));
+            console.log('📦 Allocated buffer size:', splatData.length, 'bytes');
+        } else {
+            // Fallback for servers that don't provide content-length
+            console.log('⚠️ No content-length header, using dynamic allocation');
+            splatData = new Uint8Array(0);
+        }
+
+        downsample = splatData.length / rowLength > 500000 ? 1 : 1 / devicePixelRatio;
 
     const worker = new Worker(
         URL.createObjectURL(
@@ -1038,20 +1072,30 @@ export async function initSplatViewer(containerId, splatFile) {
         buffer = e.data.buffer;
         vertexCount = e.data.vertexCount || Math.floor(e.data.buffer.byteLength / rowLength);
         
-        // console.log('📷 Updated vertex count to:', vertexCount);
+        // Cache the processed data for future use (only if this is from a fresh download, not from cache)
+        if (!cachedData && buffer && vertexCount > 0) {
+            console.log('💾 Storing processed data in cache...');
+            splatCache.set(splatFile, buffer, vertexCount, {
+                timestamp: Date.now(),
+                fileSize: buffer.byteLength,
+                originalUrl: splatFile
+            }).then(success => {
+                if (success) {
+                    console.log('✅ Successfully cached splat data');
+                } else {
+                    console.warn('⚠️ Failed to cache splat data');
+                }
+            }).catch(error => {
+                console.error('❌ Error caching splat data:', error);
+            });
+        }
         
         // console.log('✅ Uploaded splat vertex data to GPU:', buffer.byteLength, 'bytes');
         
-        // Position camera to view the PLY data (crop bounds are -3 to 3 on all axes)
+        // Stop carousel when data loads, but keep orbital camera
         if (vertexCount > 0) {
-            // console.log('📷 Positioning camera for PLY data viewing');
-            viewMatrix = [
-                1, 0, 0, 0,
-                0, 0.866, -0.5, 0,
-                0, 0.5, 0.866, 0,
-                0, 2, 8, 1  // Position camera back and slightly up
-            ];
             carousel = false; // Stop carousel to show the data
+            // Note: Orbital camera system will handle positioning
         }
         
         // Force an immediate sort after receiving buffer
@@ -1099,85 +1143,57 @@ export async function initSplatViewer(containerId, splatFile) {
     }
 };
 
-    let activeKeys = [];
     let currentCameraIndex = 0;
 
-    window.addEventListener("keydown", (e) => {
-        // if (document.activeElement != document.body) return;
-        carousel = false;
-        if (!activeKeys.includes(e.code)) activeKeys.push(e.code);
-        if (/\d/.test(e.key)) {
-            currentCameraIndex = parseInt(e.key);
-            camera = cameras[currentCameraIndex];
-            viewMatrix = getViewMatrix(camera);
-        }
-        if (["-", "_"].includes(e.key)) {
-            currentCameraIndex =
-                (currentCameraIndex + cameras.length - 1) % cameras.length;
-            viewMatrix = getViewMatrix(cameras[currentCameraIndex]);
-        }
-        if (["+", "="].includes(e.key)) {
-            currentCameraIndex = (currentCameraIndex + 1) % cameras.length;
-            viewMatrix = getViewMatrix(cameras[currentCameraIndex]);
-        }
-        if (e.code == "KeyV") {
-            location.hash =
-                "#" +
-                JSON.stringify(
-                    viewMatrix.map((k) => Math.round(k * 100) / 100),
-                );
-        } else if (e.code === "KeyP") {
-            carousel = true;
-        }
-    });
+    // Orbital camera state
+    let cameraRadius = 8.0;  // Distance from origin
+    let cameraTheta = 0.0;   // Horizontal angle (azimuth)
+    let cameraPhi = Math.PI / 3; // Vertical angle (elevation) - start slightly above
+
+    // Helper function to create orbital camera matrix
+    function createLookAtMatrix(radius, theta, phi) {
+        // Start with identity matrix for camera-to-world transform
+        let matrix = [
+            1, 0, 0, 0,
+            0, 1, 0, 0,
+            0, 0, 1, 0,
+            0, 0, 0, 1
+        ];
         
-    window.addEventListener("keyup", (e) => {
-        activeKeys = activeKeys.filter((k) => k !== e.code);
-    });
-    window.addEventListener("blur", () => {
-        activeKeys = [];
-    });
+        // Apply transformations in correct order for orbital camera:
+        // 1. Move camera back by radius
+        matrix = translate4(matrix, 0, 0, radius);
+        
+        // 2. Apply vertical rotation (phi)
+        matrix = rotate4(matrix, phi - Math.PI/4, 1, 0, 0);
+        
+        // 3. Apply horizontal rotation (theta)
+        matrix = rotate4(matrix, theta, 0, 1, 0);
+        
+        return matrix;
+    }
+
+    // Initialize orbital camera
+    viewMatrix = createLookAtMatrix(cameraRadius, cameraTheta, cameraPhi);
 
     window.addEventListener(
         "wheel",
         (e) => {
             carousel = false;
             e.preventDefault();
-            const lineHeight = 10;
-            const scale =
-                e.deltaMode == 1
-                    ? lineHeight
-                    : e.deltaMode == 2
-                      ? innerHeight
-                      : 1;
-            let inv = invert4(viewMatrix);
-            if (e.shiftKey) {
-                inv = translate4(
-                    inv,
-                    (e.deltaX * scale) / innerWidth,
-                    (e.deltaY * scale) / innerHeight,
-                    0,
-                );
-            } else if (e.ctrlKey || e.metaKey) {
-                // inv = rotate4(inv,  (e.deltaX * scale) / innerWidth,  0, 0, 1);
-                // inv = translate4(inv,  0, (e.deltaY * scale) / innerHeight, 0);
-                // let preY = inv[13];
-                inv = translate4(
-                    inv,
-                    0,
-                    0,
-                    (-10 * (e.deltaY * scale)) / innerHeight,
-                );
-                // inv[13] = preY;
-            } else {
-                let d = 4;
-                inv = translate4(inv, 0, 0, d);
-                inv = rotate4(inv, -(e.deltaX * scale) / innerWidth, 0, 1, 0);
-                inv = rotate4(inv, (e.deltaY * scale) / innerHeight, 1, 0, 0);
-                inv = translate4(inv, 0, 0, -d);
-            }
-
-            viewMatrix = invert4(inv);
+            
+            // Scale the zoom speed
+            const zoomSpeed = 0.1;
+            const delta = e.deltaY * zoomSpeed;
+            
+            // Adjust camera radius (zoom in/out from origin)
+            cameraRadius += delta;
+            
+            // Clamp radius to reasonable bounds - don't let camera get too close to origin
+            cameraRadius = Math.max(2.0, Math.min(50, cameraRadius));
+            
+            // Update view matrix
+            viewMatrix = createLookAtMatrix(cameraRadius, cameraTheta, cameraPhi);
         },
         { passive: false },
     );
@@ -1188,48 +1204,37 @@ export async function initSplatViewer(containerId, splatFile) {
         e.preventDefault();
         startX = e.clientX;
         startY = e.clientY;
-        down = e.ctrlKey || e.metaKey ? 2 : 1;
+        down = 1; // Simplified - only one type of mouse interaction
     });
     canvas.addEventListener("contextmenu", (e) => {
         carousel = false;
         e.preventDefault();
         startX = e.clientX;
         startY = e.clientY;
-        down = 2;
+        down = 1;
     });
 
     canvas.addEventListener("mousemove", (e) => {
         e.preventDefault();
-        if (down == 1) {
-            let inv = invert4(viewMatrix);
-            let dx = (5 * (e.clientX - startX)) / innerWidth;
-            let dy = (5 * (e.clientY - startY)) / innerHeight;
-            let d = 4;
-
-            inv = translate4(inv, 0, 0, d);
-            inv = rotate4(inv, dx, 0, 1, 0);
-            inv = rotate4(inv, -dy, 1, 0, 0);
-            inv = translate4(inv, 0, 0, -d);
-            // let postAngle = Math.atan2(inv[0], inv[10])
-            // inv = rotate4(inv, postAngle - preAngle, 0, 0, 1)
-            // console.log(postAngle)
-            viewMatrix = invert4(inv);
-
-            startX = e.clientX;
-            startY = e.clientY;
-        } else if (down == 2) {
-            let inv = invert4(viewMatrix);
-            // inv = rotateY(inv, );
-            // let preY = inv[13];
-            inv = translate4(
-                inv,
-                (-10 * (e.clientX - startX)) / innerWidth,
-                0,
-                (10 * (e.clientY - startY)) / innerHeight,
-            );
-            // inv[13] = preY;
-            viewMatrix = invert4(inv);
-
+        if (down) {
+            // Calculate mouse delta
+            const deltaX = e.clientX - startX;
+            const deltaY = e.clientY - startY;
+            
+            // Orbital rotation sensitivity
+            const rotationSpeed = 0.005;
+            
+            // Update spherical coordinates
+            cameraTheta -= deltaX * rotationSpeed; // Horizontal rotation
+            cameraPhi += deltaY * rotationSpeed;   // Vertical rotation
+            
+            // Clamp phi to prevent camera flipping
+            const epsilon = 0.01;
+            cameraPhi = Math.max(epsilon, Math.min(Math.PI - epsilon, cameraPhi));
+            
+            // Update view matrix
+            viewMatrix = createLookAtMatrix(cameraRadius, cameraTheta, cameraPhi);
+            
             startX = e.clientX;
             startY = e.clientY;
         }
@@ -1253,13 +1258,12 @@ export async function initSplatViewer(containerId, splatFile) {
                 startY = e.touches[0].clientY;
                 down = 1;
             } else if (e.touches.length === 2) {
-                // console.log('beep')
                 carousel = false;
                 startX = e.touches[0].clientX;
                 altX = e.touches[1].clientX;
                 startY = e.touches[0].clientY;
                 altY = e.touches[1].clientY;
-                down = 1;
+                down = 2; // Two finger gesture
             }
         },
         { passive: false },
@@ -1268,59 +1272,40 @@ export async function initSplatViewer(containerId, splatFile) {
         "touchmove",
         (e) => {
             e.preventDefault();
-            if (e.touches.length === 1 && down) {
-                let inv = invert4(viewMatrix);
-                let dx = (4 * (e.touches[0].clientX - startX)) / innerWidth;
-                let dy = (4 * (e.touches[0].clientY - startY)) / innerHeight;
-
-                let d = 4;
-                inv = translate4(inv, 0, 0, d);
-                // inv = translate4(inv,  -x, -y, -z);
-                // inv = translate4(inv,  x, y, z);
-                inv = rotate4(inv, dx, 0, 1, 0);
-                inv = rotate4(inv, -dy, 1, 0, 0);
-                inv = translate4(inv, 0, 0, -d);
-
-                viewMatrix = invert4(inv);
-
+            if (e.touches.length === 1 && down === 1) {
+                // Single finger - orbit around origin
+                const deltaX = e.touches[0].clientX - startX;
+                const deltaY = e.touches[0].clientY - startY;
+                
+                const rotationSpeed = 0.01;
+                
+                cameraTheta -= deltaX * rotationSpeed;
+                cameraPhi += deltaY * rotationSpeed;
+                
+                // Clamp phi
+                const epsilon = 0.01;
+                cameraPhi = Math.max(epsilon, Math.min(Math.PI - epsilon, cameraPhi));
+                
+                viewMatrix = createLookAtMatrix(cameraRadius, cameraTheta, cameraPhi);
+                
                 startX = e.touches[0].clientX;
                 startY = e.touches[0].clientY;
-            } else if (e.touches.length === 2) {
-                // alert('beep')
-                const dtheta =
-                    Math.atan2(startY - altY, startX - altX) -
-                    Math.atan2(
-                        e.touches[0].clientY - e.touches[1].clientY,
-                        e.touches[0].clientX - e.touches[1].clientX,
-                    );
-                const dscale =
-                    Math.hypot(startX - altX, startY - altY) /
-                    Math.hypot(
-                        e.touches[0].clientX - e.touches[1].clientX,
-                        e.touches[0].clientY - e.touches[1].clientY,
-                    );
-                const dx =
-                    (e.touches[0].clientX +
-                        e.touches[1].clientX -
-                        (startX + altX)) /
-                    2;
-                const dy =
-                    (e.touches[0].clientY +
-                        e.touches[1].clientY -
-                        (startY + altY)) /
-                    2;
-                let inv = invert4(viewMatrix);
-                // inv = translate4(inv,  0, 0, d);
-                inv = rotate4(inv, dtheta, 0, 0, 1);
-
-                inv = translate4(inv, -dx / innerWidth, -dy / innerHeight, 0);
-
-                // let preY = inv[13];
-                inv = translate4(inv, 0, 0, 3 * (1 - dscale));
-                // inv[13] = preY;
-
-                viewMatrix = invert4(inv);
-
+            } else if (e.touches.length === 2 && down === 2) {
+                // Two finger - pinch to zoom
+                const currentDistance = Math.hypot(
+                    e.touches[0].clientX - e.touches[1].clientX,
+                    e.touches[0].clientY - e.touches[1].clientY
+                );
+                const startDistance = Math.hypot(startX - altX, startY - altY);
+                
+                const zoomFactor = startDistance / currentDistance;
+                const zoomSpeed = 0.1;
+                
+                cameraRadius *= (1 + (zoomFactor - 1) * zoomSpeed);
+                cameraRadius = Math.max(2.0, Math.min(50, cameraRadius));
+                
+                viewMatrix = createLookAtMatrix(cameraRadius, cameraTheta, cameraPhi);
+                
                 startX = e.touches[0].clientX;
                 altX = e.touches[1].clientX;
                 startY = e.touches[0].clientY;
@@ -1359,113 +1344,15 @@ export async function initSplatViewer(containerId, splatFile) {
     let leftGamepadTrigger, rightGamepadTrigger;
 
     const frame = (now) => {
-        let inv = invert4(viewMatrix);
-        let shiftKey =
-            activeKeys.includes("Shift") ||
-            activeKeys.includes("ShiftLeft") ||
-            activeKeys.includes("ShiftRight");
-
-        if (activeKeys.includes("ArrowUp")) {
-            if (shiftKey) {
-                inv = translate4(inv, 0, -0.03, 0);
-            } else {
-                inv = translate4(inv, 0, 0, 0.1);
-            }
-        }
-        if (activeKeys.includes("ArrowDown")) {
-            if (shiftKey) {
-                inv = translate4(inv, 0, 0.03, 0);
-            } else {
-                inv = translate4(inv, 0, 0, -0.1);
-            }
-        }
-        if (activeKeys.includes("ArrowLeft"))
-            inv = translate4(inv, -0.03, 0, 0);
-        //
-        if (activeKeys.includes("ArrowRight"))
-            inv = translate4(inv, 0.03, 0, 0);
-        // inv = rotate4(inv, 0.01, 0, 1, 0);
-        if (activeKeys.includes("KeyA")) inv = rotate4(inv, -0.01, 0, 1, 0);
-        if (activeKeys.includes("KeyD")) inv = rotate4(inv, 0.01, 0, 1, 0);
-        if (activeKeys.includes("KeyQ")) inv = rotate4(inv, 0.01, 0, 0, 1);
-        if (activeKeys.includes("KeyE")) inv = rotate4(inv, -0.01, 0, 0, 1);
-        if (activeKeys.includes("KeyW")) inv = rotate4(inv, 0.005, 1, 0, 0);
-        if (activeKeys.includes("KeyS")) inv = rotate4(inv, -0.005, 1, 0, 0);
+        // Note: Orbital camera system handles viewMatrix
+        // Only apply jumping effects as overlay
 
         const gamepads = navigator.getGamepads ? navigator.getGamepads() : [];
-        let isJumping = activeKeys.includes("Space");
+        let isJumping = false;
         for (let gamepad of gamepads) {
             if (!gamepad) continue;
 
-            const axisThreshold = 0.1; // Threshold to detect when the axis is intentionally moved
-            const moveSpeed = 0.06;
-            const rotateSpeed = 0.02;
-
-            // Assuming the left stick controls translation (axes 0 and 1)
-            if (Math.abs(gamepad.axes[0]) > axisThreshold) {
-                inv = translate4(inv, moveSpeed * gamepad.axes[0], 0, 0);
-                carousel = false;
-            }
-            if (Math.abs(gamepad.axes[1]) > axisThreshold) {
-                inv = translate4(inv, 0, 0, -moveSpeed * gamepad.axes[1]);
-                carousel = false;
-            }
-            if (gamepad.buttons[12].pressed || gamepad.buttons[13].pressed) {
-                inv = translate4(
-                    inv,
-                    0,
-                    -moveSpeed *
-                        (gamepad.buttons[12].pressed -
-                            gamepad.buttons[13].pressed),
-                    0,
-                );
-                carousel = false;
-            }
-
-            if (gamepad.buttons[14].pressed || gamepad.buttons[15].pressed) {
-                inv = translate4(
-                    inv,
-                    -moveSpeed *
-                        (gamepad.buttons[14].pressed -
-                            gamepad.buttons[15].pressed),
-                    0,
-                    0,
-                );
-                carousel = false;
-            }
-
-            // Assuming the right stick controls rotation (axes 2 and 3)
-            if (Math.abs(gamepad.axes[2]) > axisThreshold) {
-                inv = rotate4(inv, rotateSpeed * gamepad.axes[2], 0, 1, 0);
-                carousel = false;
-            }
-            if (Math.abs(gamepad.axes[3]) > axisThreshold) {
-                inv = rotate4(inv, -rotateSpeed * gamepad.axes[3], 1, 0, 0);
-                carousel = false;
-            }
-
-            let tiltAxis = gamepad.buttons[6].value - gamepad.buttons[7].value;
-            if (Math.abs(tiltAxis) > axisThreshold) {
-                inv = rotate4(inv, rotateSpeed * tiltAxis, 0, 0, 1);
-                carousel = false;
-            }
-            if (gamepad.buttons[4].pressed && !leftGamepadTrigger) {
-                camera =
-                    cameras[(cameras.indexOf(camera) + 1) % cameras.length];
-                inv = invert4(getViewMatrix(camera));
-                carousel = false;
-            }
-            if (gamepad.buttons[5].pressed && !rightGamepadTrigger) {
-                camera =
-                    cameras[
-                        (cameras.indexOf(camera) + cameras.length - 1) %
-                            cameras.length
-                    ];
-                inv = invert4(getViewMatrix(camera));
-                carousel = false;
-            }
-            leftGamepadTrigger = gamepad.buttons[4].pressed;
-            rightGamepadTrigger = gamepad.buttons[5].pressed;
+            // Only keep jump control, remove all camera controls
             if (gamepad.buttons[0].pressed) {
                 isJumping = true;
                 carousel = false;
@@ -1475,54 +1362,13 @@ export async function initSplatViewer(containerId, splatFile) {
             }
         }
 
-        if (
-            ["KeyJ", "KeyK", "KeyL", "KeyI"].some((k) => activeKeys.includes(k))
-        ) {
-            let d = 4;
-            inv = translate4(inv, 0, 0, d);
-            inv = rotate4(
-                inv,
-                activeKeys.includes("KeyJ")
-                    ? -0.05
-                    : activeKeys.includes("KeyL")
-                      ? 0.05
-                      : 0,
-                0,
-                1,
-                0,
-            );
-            inv = rotate4(
-                inv,
-                activeKeys.includes("KeyI")
-                    ? 0.05
-                    : activeKeys.includes("KeyK")
-                      ? -0.05
-                      : 0,
-                1,
-                0,
-                0,
-            );
-            inv = translate4(inv, 0, 0, -d);
-        }
-
-        viewMatrix = invert4(inv);
-
-        if (carousel) {
-            let inv = invert4(defaultViewMatrix);
-
-            const t = Math.sin((Date.now() - start) / 5000);
-            inv = translate4(inv, 2.5 * t, 0, 6 * (1 - Math.cos(t)));
-            inv = rotate4(inv, -0.6 * t, 0, 1, 0);
-
-            viewMatrix = invert4(inv);
-        }
-
         if (isJumping) {
             jumpDelta = Math.min(1, jumpDelta + 0.05);
         } else {
             jumpDelta = Math.max(0, jumpDelta - 0.05);
         }
 
+        // Use orbital camera as base, only apply jump effects as overlay
         let inv2 = invert4(viewMatrix);
         inv2 = translate4(inv2, 0, -jumpDelta, 0);
         inv2 = rotate4(inv2, -0.1 * jumpDelta, 1, 0, 0);
@@ -1536,9 +1382,36 @@ export async function initSplatViewer(containerId, splatFile) {
 
         if (vertexCount > 0) {
             document.getElementById("spinner").style.display = "none";
+            
+            // Render main splats
+            gl.useProgram(program);
             gl.uniformMatrix4fv(u_view, false, actualViewMatrix);
             gl.clear(gl.COLOR_BUFFER_BIT);
             gl.drawArraysInstanced(gl.TRIANGLE_FAN, 0, 4, vertexCount);
+            
+            // Render red dot at origin
+            gl.useProgram(redDotProgram);
+            gl.enable(gl.PROGRAM_POINT_SIZE);
+            
+            // Calculate MVP matrix for the red dot
+            const mvpMatrix = multiply4(projectionMatrix, actualViewMatrix);
+            gl.uniformMatrix4fv(redDot_u_mvpMatrix, false, mvpMatrix);
+            
+            // Bind origin point buffer
+            gl.bindBuffer(gl.ARRAY_BUFFER, originBuffer);
+            gl.enableVertexAttribArray(redDot_a_position);
+            gl.vertexAttribPointer(redDot_a_position, 3, gl.FLOAT, false, 0, 0);
+            
+            // Draw the red dot
+            gl.drawArrays(gl.POINTS, 0, 1);
+            
+            // Restore main program state for next frame
+            gl.useProgram(program);
+            gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
+            gl.enableVertexAttribArray(a_position);
+            gl.vertexAttribPointer(a_position, 2, gl.FLOAT, false, 0, 0);
+            gl.disable(gl.PROGRAM_POINT_SIZE);
+            
         } else {
             gl.clear(gl.COLOR_BUFFER_BIT);
             document.getElementById("spinner").style.display = "";
@@ -1653,4 +1526,5 @@ export async function initSplatViewer(containerId, splatFile) {
                 });
             }
         }
-    }
+    } // End of cache check else block   
+}
