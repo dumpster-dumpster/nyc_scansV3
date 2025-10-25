@@ -686,34 +686,6 @@ void main () {
 
     `.trim();
 
-// Red dot shaders for origin marker
-const redDotVertexShaderSource = `
-#version 300 es
-precision highp float;
-
-uniform mat4 u_mvpMatrix;
-in vec3 a_position;
-
-void main() {
-    gl_Position = u_mvpMatrix * vec4(a_position, 1.0);
-    gl_PointSize = 15.0;
-}
-`.trim();
-
-const redDotFragmentShaderSource = `
-#version 300 es
-precision highp float;
-
-out vec4 fragColor;
-
-void main() {
-    // Create a circular dot by discarding pixels outside circle
-    vec2 coord = gl_PointCoord - vec2(0.5);
-    if (length(coord) > 0.5) discard;
-    fragColor = vec4(1.0, 0.0, 0.0, 1.0); // Bright red
-}
-`.trim();
-
 let defaultViewMatrix = [
     0.47, 0.04, 0.88, 0, -0.11, 0.99, 0.02, 0, -0.88, -0.11, 0.47, 0, 0.07,
     0.03, 6.55, 1,
@@ -832,37 +804,6 @@ export async function initSplatViewer(containerId, splatFile) {
 
     if (!gl.getProgramParameter(program, gl.LINK_STATUS))
         console.error(gl.getProgramInfoLog(program));
-
-    // Create red dot shader program
-    const redDotVertexShader = gl.createShader(gl.VERTEX_SHADER);
-    gl.shaderSource(redDotVertexShader, redDotVertexShaderSource);
-    gl.compileShader(redDotVertexShader);
-    if (!gl.getShaderParameter(redDotVertexShader, gl.COMPILE_STATUS))
-        console.error('Red dot vertex shader error:', gl.getShaderInfoLog(redDotVertexShader));
-
-    const redDotFragmentShader = gl.createShader(gl.FRAGMENT_SHADER);
-    gl.shaderSource(redDotFragmentShader, redDotFragmentShaderSource);
-    gl.compileShader(redDotFragmentShader);
-    if (!gl.getShaderParameter(redDotFragmentShader, gl.COMPILE_STATUS))
-        console.error('Red dot fragment shader error:', gl.getShaderInfoLog(redDotFragmentShader));
-
-    const redDotProgram = gl.createProgram();
-    gl.attachShader(redDotProgram, redDotVertexShader);
-    gl.attachShader(redDotProgram, redDotFragmentShader);
-    gl.linkProgram(redDotProgram);
-
-    if (!gl.getProgramParameter(redDotProgram, gl.LINK_STATUS))
-        console.error('Red dot program link error:', gl.getProgramInfoLog(redDotProgram));
-
-    // Get red dot program uniforms and attributes
-    const redDot_u_mvpMatrix = gl.getUniformLocation(redDotProgram, "u_mvpMatrix");
-    const redDot_a_position = gl.getAttribLocation(redDotProgram, "a_position");
-
-    // Create origin point geometry (single point at 0,0,0)
-    const originPoint = new Float32Array([0.0, 0.0, 0.0]);
-    const originBuffer = gl.createBuffer();
-    gl.bindBuffer(gl.ARRAY_BUFFER, originBuffer);
-    gl.bufferData(gl.ARRAY_BUFFER, originPoint, gl.STATIC_DRAW);
 
     gl.disable(gl.DEPTH_TEST);
     gl.enable(gl.BLEND);
@@ -1388,26 +1329,6 @@ export async function initSplatViewer(containerId, splatFile) {
             gl.uniformMatrix4fv(u_view, false, actualViewMatrix);
             gl.clear(gl.COLOR_BUFFER_BIT);
             gl.drawArraysInstanced(gl.TRIANGLE_FAN, 0, 4, vertexCount);
-            
-            // Render red dot at origin
-            gl.useProgram(redDotProgram);
-            gl.enable(gl.PROGRAM_POINT_SIZE);
-            
-            // Calculate MVP matrix for the red dot
-            const mvpMatrix = multiply4(projectionMatrix, actualViewMatrix);
-            gl.uniformMatrix4fv(redDot_u_mvpMatrix, false, mvpMatrix);
-            
-            // Bind origin point buffer
-            gl.bindBuffer(gl.ARRAY_BUFFER, originBuffer);
-            gl.enableVertexAttribArray(redDot_a_position);
-            gl.vertexAttribPointer(redDot_a_position, 3, gl.FLOAT, false, 0, 0);
-            
-            // Draw the red dot
-            gl.drawArrays(gl.POINTS, 0, 1);
-            
-            // Restore main program state for next frame
-            gl.useProgram(program);
-            gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
             gl.enableVertexAttribArray(a_position);
             gl.vertexAttribPointer(a_position, 2, gl.FLOAT, false, 0, 0);
             gl.disable(gl.PROGRAM_POINT_SIZE);
